@@ -1,0 +1,15 @@
+{% macro render_field(field) %}
+    {# Render the label for the field #}
+    {{ field.label }}
+    
+    {# Render the field with any additional keyword arguments, marked as safe to allow HTML rendering #}
+    {{ field(**kwargs)|safe }}
+    
+    <ul>
+        {# Loop through any errors associated with the field and display them in a list with red text #}
+        {% for error in field.errors %}
+            <li style="color:red;">{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
